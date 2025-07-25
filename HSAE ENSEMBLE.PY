@@ -28,7 +28,7 @@ def build_hsae(input_dim):
     decoded = LeakyReLU(0.1)(decoded)
     decoded = Dense(1024)(decoded)
     decoded = LeakyReLU(0.1)(decoded)
-    output_layer = Dense(input_dim, activation='relu')(decoded)
+    output_layer = Dense(input_dim)(decoded)
     anomaly_score = Dense(1, activation='sigmoid', name="anomaly_score")(encoded)
     model = Model(inputs=input_layer, outputs=[output_layer, anomaly_score])
     def hybrid_loss(y_true, y_pred):
