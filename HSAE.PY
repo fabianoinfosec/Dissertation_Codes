@@ -25,7 +25,7 @@ def build_hybrid_autoencoder(input_dim):
     decoded = LeakyReLU(alpha=0.1)(decoded)
     decoded = Dense(1024)(decoded)
     decoded = LeakyReLU(alpha=0.1)(decoded)
-    output_layer = Dense(input_dim, activation='relu')(decoded)
+    output_layer = Dense(input_dim)(decoded)
     anomaly_score = Dense(1, activation='sigmoid', name="anomaly_score")(encoded)
     autoencoder = Model(input_layer, [output_layer, anomaly_score])
     def hybrid_loss(y_true, y_pred):
